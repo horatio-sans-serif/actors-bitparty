@@ -1,0 +1,29 @@
+[package]
+name = "bitparty"
+version = "0.1.0"
+edition = "2024"
+description = "Actor-based framework with message passing"
+license = "MIT"
+
+[features]
+default = []
+serde = ["dep:serde", "dep:serde_json", "dep:uuid"]
+
+[dependencies]
+# Actor system - lock-free queues
+crossbeam = "0.8"
+
+# Utilities
+parking_lot = "0.12"
+slotmap = "1.0"
+smallvec = "1.13"
+log = "0.4"
+thiserror = "2"
+
+# Serialization (optional, for bridge)
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true }
+uuid = { version = "1", features = ["v4", "serde"], optional = true }
+
+[dev-dependencies]
+env_logger = "0.11"
